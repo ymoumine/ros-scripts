@@ -31,3 +31,15 @@ sudo apt update && sudo apt install ros-dev-tools
 # install ros 2
 sudo apt update && sudo apt full-upgrade && sudo apt install -y ros-jazzy-ros-base
 
+# check bash source then append setup file
+FILE="source /opt/ros/jazzy/setup.bash"
+SOURCE="$HOME/.bashrc"
+
+# check if line exists
+if grep -Fxq "$FILE" "$SOURCE"; then
+    echo "The line is already in .bashrc"
+else
+    # append line to .bashrc
+    echo "$FILE" >> "$SOURCE"
+    echo "The line has been added to .bashrc"
+fi
